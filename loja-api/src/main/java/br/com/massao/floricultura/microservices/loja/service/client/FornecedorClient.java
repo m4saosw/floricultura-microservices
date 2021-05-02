@@ -3,33 +3,20 @@ package br.com.massao.floricultura.microservices.loja.service.client;
 import br.com.massao.floricultura.microservices.loja.dto.InfoFornecedorDTO;
 import br.com.massao.floricultura.microservices.loja.dto.InfoPedidoDTO;
 import br.com.massao.floricultura.microservices.loja.dto.ItemDaCompraDTO;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
-@Service
-@Slf4j
-public class FornecedorClient {
-    @Autowired
-    private RestTemplate client;
+@FeignClient("fornecedor-api")
+public interface FornecedorClient {
 
-    public InfoFornecedorDTO getInfoPorEstado(String estado) {
-        String url = "http://fornecedor-api/fornecedor-api/infos/" + estado;
+    @GetMapping("/fornecedor-api/infos/{estado}")
+    InfoFornecedorDTO getInfoPorEstado(@PathVariable String estado);
 
-        ResponseEntity<InfoFornecedorDTO> exchange = client.getForEntity(url, InfoFornecedorDTO.class);
-
-        return exchange.getBody();
-    }
-
-
-    public InfoPedidoDTO realizaPedido(List<ItemDaCompraDTO> itens) {
-        String url = "http://fornecedor-api/fornecedor-api/pedidos";
-        ResponseEntity<InfoPedidoDTO> exchange = client.postForEntity(url, itens, InfoPedidoDTO.class);
-
-        return exchange.getBody();
-    }
+    @PostMapping(value = "/fornecedor-api/pedidos")
+    InfoPedidoDTO realizaPedido(List<ItemDaCompraDTO> itens);
 }
