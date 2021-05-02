@@ -1,0 +1,9 @@
+# bootstrap - carrega configurações antes das proprias configurações da aplicação
+spring:
+  application:
+    name: 'fornecedor-api'
+  profiles:
+    active: default
+  cloud:
+    config:
+      uri: http://localhost:8888
