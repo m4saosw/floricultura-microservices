@@ -6,7 +6,8 @@ spring:
   cloud:
     config:
       server:
-        native:
-          search-locations: C:/Users/Massao/projects/Java/floricultura-microservices/floricultura-microservices-config-repo
-  profiles:
-    active: native
+        encrypt:
+          enabled: false
+        git:
+          uri: https://github.com/m4saosw/floricultura-microservices-config-repo/
+          search-paths: fornecedor-api, loja-api, transportador-api
