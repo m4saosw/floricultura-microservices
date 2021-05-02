@@ -1,0 +1,12 @@
+
+server:
+  port: 8888
+  
+spring:
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: C:/Users/Massao/projects/Java/floricultura-microservices/floricultura-microservices-config-repo
+  profiles:
+    active: native
