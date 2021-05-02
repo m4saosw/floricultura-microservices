@@ -2,7 +2,7 @@
 
 Contexto de aplicação de Floricultura.
 
-Eureka Server é o servidor de configurações.
+Eureka Server é o servidor de configurações para resolução de nomes de endereços.
 
 Aplicação para fins de estudo.
 

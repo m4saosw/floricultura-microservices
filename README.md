@@ -6,7 +6,7 @@ Aplicação para fins de estudo.
 
 ## Tecnologias
     Java 8
-    Spring Framework
+    Spring Framework (Boot, Spring Cloud)
     MySql/ MariaDB
 	
 
