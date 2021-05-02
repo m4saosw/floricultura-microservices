@@ -9,7 +9,7 @@ Aplicação para fins de estudo.
 
 ## Tecnologias
     Java 8
-    Spring Framework (Boot, Web, Data JPA)
+    Spring Framework (Boot, Web, Data JPA, Cloud - Netflix Eureka, Config Server)
     MySql/ MariaDB
 	Maven
     Lombok
@@ -17,7 +17,6 @@ Aplicação para fins de estudo.
 # Características da solução
 
 Esta é uma versão inicial, com diversas limitações:
-- configurações hardcoded
 - sem tratamento de erros
 - sem controle transacional
 - sem controle de segurança
