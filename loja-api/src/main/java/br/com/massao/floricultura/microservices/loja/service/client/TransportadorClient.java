@@ -15,7 +15,7 @@ public class TransportadorClient {
     private RestTemplate client;
 
     public VoucherDTO reservaEntrega(InfoEntregaDTO pedidoDTO) {
-        String url = "http://localhost:8083/transportador-api/entregas";
+        String url = "http://transportador-api/transportador-api/entregas";
 
         ResponseEntity<VoucherDTO> exchange = client.postForEntity(url, pedidoDTO, VoucherDTO.class);
 

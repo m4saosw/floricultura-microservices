@@ -18,7 +18,7 @@ public class FornecedorClient {
     private RestTemplate client;
 
     public InfoFornecedorDTO getInfoPorEstado(String estado) {
-        String url = "http://localhost:8081/fornecedor-api/infos/" + estado;
+        String url = "http://fornecedor-api/fornecedor-api/infos/" + estado;
 
         ResponseEntity<InfoFornecedorDTO> exchange = client.getForEntity(url, InfoFornecedorDTO.class);
 
@@ -27,7 +27,7 @@ public class FornecedorClient {
 
 
     public InfoPedidoDTO realizaPedido(List<ItemDaCompraDTO> itens) {
-        String url = "http://localhost:8081/fornecedor-api/pedidos";
+        String url = "http://fornecedor-api/fornecedor-api/pedidos";
         ResponseEntity<InfoPedidoDTO> exchange = client.postForEntity(url, itens, InfoPedidoDTO.class);
 
         return exchange.getBody();
