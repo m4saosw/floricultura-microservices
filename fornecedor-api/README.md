@@ -8,7 +8,7 @@ Aplicação para fins de estudo.
 
 ## Tecnologias
     Java 8
-    Spring Framework (Boot, Web, Data JPA, Cloud - Netflix Eureka, Config Server)
+    Spring Framework (Boot, Web, Data JPA, Cloud - Netflix Eureka, Config Server, Sleuth)
     MySql/ MariaDB
 	Maven
     Lombok
@@ -19,8 +19,12 @@ Esta é uma versão inicial, com diversas limitações:
 - sem tratamento de erros
 - sem controle transacional
 - sem controle de segurança
-- sem balanceamento
 - entre outros
+
+Esta versão possui:
+- balanceamento com Eureka (Ribbon)
+- rastreamento de log distribuído com Papertrail e Spring Sleuth
+
 
 ## Pré-requisitos de execução
     Criar um banco de dados de nome "fornecedor" 
