@@ -27,5 +27,6 @@ public class CompraController {
         log.info("Registrando nova Compra <{}>", compra);
 
         compraService.realizaCompra(compra);
+        log.info("Encerrando registro da nova Compra <{}>", compra);
     }
 }

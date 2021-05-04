@@ -6,6 +6,7 @@ import br.com.massao.floricultura.microservices.loja.model.CompraState;
 import br.com.massao.floricultura.microservices.loja.repository.CompraRepository;
 import br.com.massao.floricultura.microservices.loja.service.client.FornecedorClient;
 import br.com.massao.floricultura.microservices.loja.service.client.TransportadorClient;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,7 @@ public class CompraServiceImpl implements CompraService {
 
 
     @Override
+    @HystrixCommand(threadPoolKey = "getByIdThreadPool")
     public Compra getById(Long id) {
         return compraRepository.findById(id).orElse(new Compra());
     }
@@ -38,6 +40,7 @@ public class CompraServiceImpl implements CompraService {
      * @return
      */
     @Override
+    @HystrixCommand(fallbackMethod = "realizaCompraFallback", threadPoolKey = "realizaCompraThreadPool")
     public Compra realizaCompra(CompraDTO compra) {
         Compra compraSalva = new Compra();
 
@@ -78,8 +81,26 @@ public class CompraServiceImpl implements CompraService {
         compraSalva.setVoucher(voucher.getNumero());
         compraRepository.save(compraSalva);
 
-
+        log.debug("Encerrando processamento da nova Compra. Compra salva <{}>", compraSalva);
         return compraSalva;
+    }
+
+
+    private Compra realizaCompraFallback(CompraDTO compra) {
+        log.info("Circuit breaker acionado. Executando fallback para Compra <{}>", compra);
+
+        if (compra.getCompraId() != null) {
+            Compra compraFallback = compraRepository.findById(compra.getCompraId()).get();
+
+            log.info("Fallback retornou Compra <{}>", compraFallback);
+            return compraFallback;
+        }
+
+        Compra compraFallback = new Compra();
+        compraFallback.setEnderecoDestino(compra.getEndereco().toString());
+
+        log.info("Fallback retornou Compra <{}>", compraFallback);
+        return compraFallback;
     }
 
 
