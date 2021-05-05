@@ -9,7 +9,7 @@ Aplicação para fins de estudo.
 
 ## Tecnologias
     Java 8
-    Spring Framework (Boot, Web, Data JPA, Cloud - Netflix Eureka, Config Server, Sleuth, Hystrix)
+    Spring Framework (Boot, Web, Data JPA, Cloud - Netflix Eureka, Config Server, Sleuth, Hystrix, Security OAuth2)
     MySql/ MariaDB
 	Maven
     Lombok
