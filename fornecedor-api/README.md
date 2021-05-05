@@ -8,22 +8,18 @@ Aplicação para fins de estudo.
 
 ## Tecnologias
     Java 8
-    Spring Framework (Boot, Web, Data JPA, Cloud - Netflix Eureka, Config Server, Sleuth)
+    Spring Framework (Boot, Web, Data JPA, Cloud - Netflix Eureka, Config Server, Sleuth, Security OAuth2)
     MySql/ MariaDB
 	Maven
     Lombok
 
 # Características da solução
 
-Esta é uma versão inicial, com diversas limitações:
-- sem tratamento de erros
-- sem controle transacional
-- sem controle de segurança
-- entre outros
 
 Esta versão possui:
 - balanceamento com Eureka (Ribbon)
 - rastreamento de log distribuído com Papertrail e Spring Sleuth
+- controle de segurança / autenticação e autorização
 
 
 ## Pré-requisitos de execução
