@@ -20,6 +20,7 @@ Esta versão possui:
 - balanceamento com Eureka (Ribbon)
 - rastreamento de log distribuído com Papertrail e Spring Sleuth
 - melhor desempenho e resiliência com uso de circuit breaker e fallback com Hystrix
+- controle de segurança / autenticação e autorização
 
 ## Pré-requisitos de execução
     Criar um banco de dados de nome "loja" 
